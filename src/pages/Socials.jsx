@@ -4,7 +4,7 @@ export default function Socials() {
   return (
     <section className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-20">
       <header className="mb-10 md:mb-14">
-        <p className="font-mono text-xs uppercase tracking-widest text-rust">Say hi</p>
+        <p className="font-mono text-xs uppercase tracking-widest text-rust">Socials :)</p>
         <h1 className="mt-3 font-display font-black text-5xl md:text-7xl tracking-tightest leading-[0.95]">
           Find us
           <br />
