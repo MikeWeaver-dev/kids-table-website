@@ -90,7 +90,7 @@ function EmptyState() {
           Instagram →
         </a>
         <a
-          href="https://open.spotify.com/search/kids%20table"
+          href="https://open.spotify.com/artist/32kfAfuvBPUU3VIRgwS8o5"
           target="_blank"
           rel="noreferrer"
           className="inline-flex items-center gap-2 border border-ink/20 text-ink px-5 py-3 text-sm uppercase tracking-wider hover:border-ink transition-colors"

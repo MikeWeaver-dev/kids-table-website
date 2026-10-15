@@ -187,7 +187,7 @@ export default function About() {
                 Apple Music
               </a>
               <a
-                href="https://open.spotify.com/search/kids%20table"
+                href="https://open.spotify.com/artist/32kfAfuvBPUU3VIRgwS8o5"
                 target="_blank"
                 rel="noreferrer"
                 className="text-ink underline underline-offset-4 decoration-ink/30 hover:decoration-rust hover:text-rust"

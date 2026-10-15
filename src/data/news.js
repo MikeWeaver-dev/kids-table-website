@@ -19,7 +19,7 @@ export const posts = [
     ],
     links: [
       { label: 'Apple Music', href: 'https://music.apple.com/us/artist/kids-table/1777719657' },
-      { label: 'Spotify', href: 'https://open.spotify.com/search/kids%20table' },
+      { label: 'Spotify', href: 'https://open.spotify.com/artist/32kfAfuvBPUU3VIRgwS8o5' },
       { label: 'YouTube', href: 'https://youtube.com/@kidstabletheband' },
     ],
   },

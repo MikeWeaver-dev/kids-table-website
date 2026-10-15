@@ -5,7 +5,7 @@ const socials = [
   { label: 'Instagram', href: 'https://instagram.com/kidstabletheband' },
   { label: 'TikTok', href: 'https://tiktok.com/@kidstabletheband' },
   { label: 'YouTube', href: 'https://youtube.com/@kidstabletheband' },
-  { label: 'Apple Music', href: 'https://music.apple.com/us/artist/kids-table/1777719657' },
+  { label: 'Spotify', href: 'https://open.spotify.com/artist/32kfAfuvBPUU3VIRgwS8o5' },
 ]
 
 export default function Footer() {
