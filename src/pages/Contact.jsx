@@ -42,9 +42,8 @@ export default function Contact() {
       <header className="mb-10 md:mb-14">
         <p className="font-mono text-xs uppercase tracking-widest text-rust">Contact</p>
         <h1 className="mt-3 font-display font-black text-5xl md:text-7xl tracking-tightest leading-[0.95]">
-          Say
+          Say Hi
           <br />
-          <span className="italic font-light">something.</span>
         </h1>
         <p className="mt-5 text-lg text-ink/70">
           Booking, press, collabs, or just saying hi. We read everything (eventually).
