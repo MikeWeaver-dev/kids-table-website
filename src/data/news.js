@@ -12,9 +12,9 @@ export const posts = [
     image: '/images/3am-club.jpg',
     imageAlt: '3AM Club album cover',
     body: [
-      "It's finally real. 3AM Club — our debut album — is out everywhere today.",
+      "It's finally real. 3AM Club, our debut album, is out everywhere today.",
       "Nine songs about the late nights that keep showing up uninvited. White Flags, Where You Shouldn't Be, Us and the Moon, Two Step!, Play Pretend, Done, Ready Steady Wait, The Glow, and Killing Time. We tracked most of it over winter and spent the spring second-guessing ourselves until we couldn't anymore.",
-      "If you've been with us from the cover days, or the first bar sets, or you just stumbled in here from a TikTok — thanks. Really. Making records is a weirdly vulnerable thing and we're grateful anyone's listening.",
+      "If you've been with us from the cover days, or the first bar sets, or you just stumbled in here from a TikTok, thanks. Really. Making records is a weirdly vulnerable thing and we're grateful anyone's listening.",
       "Pick a streaming platform below. Tell a friend. See you at the next show.",
     ],
     links: [
@@ -51,14 +51,14 @@ export const posts = [
     image: '/images/band-studio.jpg',
     imageAlt: 'Kids Table in the studio',
     body: [
-      "A bunch of nice words have been written about 3AM Club in the past couple weeks — we figured we'd put them in one place.",
-      "Off the Record Press called the record 'quintessential light indie rock, jazz, and pop' with 'sophisticated playfulness' — read the full interview and album review for how it came together.",
-      "DC Music Review wrote that it 'nails the oddly specific experiences and anxieties of love' — which, honestly, was the goal. Dork covered our single 'Where You Shouldn't Be' and clocked the trumpet, which Ryan appreciated.",
+      "A bunch of nice words have been written about 3AM Club in the past couple weeks, so we figured we'd put them in one place.",
+      "Off the Record Press called the record 'quintessential light indie rock, jazz, and pop' with 'sophisticated playfulness.' Read the full interview and album review for how it came together.",
+      "DC Music Review wrote that it 'nails the oddly specific experiences and anxieties of love,' which was honestly the goal. Dork covered our single 'Where You Shouldn't Be' and clocked the trumpet, which Ryan appreciated.",
       "The Daily Tar Heel also ran a feature on four of us going from Chapel Hill to DC, if that part of the story interests you.",
     ],
     links: [
-      { label: 'Off the Record Press — Interview', href: 'https://offtherecordpress.com/interviews/kids-table' },
-      { label: 'Off the Record Press — 3AM Club review', href: 'https://offtherecordpress.com/album-reviews/kids-table-invites-listeners-to-the-3am-club-with-indie-pop-charm' },
+      { label: 'Off the Record Press: Interview', href: 'https://offtherecordpress.com/interviews/kids-table' },
+      { label: 'Off the Record Press: 3AM Club review', href: 'https://offtherecordpress.com/album-reviews/kids-table-invites-listeners-to-the-3am-club-with-indie-pop-charm' },
       { label: 'DC Music Review', href: 'https://www.dcmusicreview.com/album-review-3-am-club-by-kids-table/' },
       { label: 'Dork', href: 'https://readdork.com/news/kids-table-where-you-shouldnt-be-3am-club-d37b3e3ef0' },
       { label: 'Daily Tar Heel feature', href: 'https://dailytarheel.com/article/lifestyle-kids-table-band-feature-20251111' },

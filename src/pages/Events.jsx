@@ -97,7 +97,7 @@ function EmptyState({ error }) {
       </p>
       <p className="mt-3 text-ink/60 max-w-md mx-auto">
         We're writing, recording, and resting our vocal cords. Follow us for the next
-        drop — we usually announce dates on Instagram first.
+        drop. We usually announce dates on Instagram first.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <a

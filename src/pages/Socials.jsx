@@ -11,8 +11,8 @@ export default function Socials() {
           <span className="italic font-light">on the internet.</span>
         </h1>
         <p className="mt-5 text-lg text-ink/70 max-w-xl">
-          We post more than we probably should. Pick your poison —
-          we're <span className="font-mono text-ink">@kidstabletheband</span> everywhere.
+          We post more than we probably should. Pick your poison. We're
+          <span className="font-mono text-ink"> @kidstabletheband</span> everywhere.
         </p>
       </header>
 

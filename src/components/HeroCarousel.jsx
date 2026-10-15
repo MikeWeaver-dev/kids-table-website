@@ -3,11 +3,11 @@ import { useEffect, useRef, useState } from 'react'
 // Edit this list to add/remove images from the hero rotation.
 // `pos` tunes `object-position` when the natural crop doesn't center well.
 const images = [
-  { src: '/images/band-hero.jpg',       alt: 'Kids Table — band portrait',  pos: 'center' },
+  { src: '/images/band-hero.jpg',       alt: 'Kids Table band portrait',  pos: 'center' },
   { src: '/images/crowd.jpg',           alt: 'Crowd at a Kids Table show',  pos: 'center' },
   { src: '/images/band-live-crowd.jpg', alt: 'Kids Table live with crowd',  pos: 'center' },
   { src: '/images/band-studio-2.jpg',   alt: 'Kids Table in the studio',    pos: 'center' },
-  { src: '/images/band-portrait.jpg',   alt: 'Kids Table — band portrait',  pos: 'center' },
+  { src: '/images/band-portrait.jpg',   alt: 'Kids Table band portrait',  pos: 'center' },
 ]
 
 const INTERVAL_MS = 5000

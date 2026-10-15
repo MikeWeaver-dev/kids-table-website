@@ -156,7 +156,7 @@ function SentMessage() {
         Got it. Thanks for writing.
       </h2>
       <p className="mt-3 text-ink/70">
-        We'll get back to you — usually within a few days. If it's urgent, email
+        We'll get back to you, usually within a few days. If it's urgent, email
         <a className="ml-1 underline hover:text-rust" href="mailto:kidstabletheband@gmail.com">
           kidstabletheband@gmail.com
         </a>

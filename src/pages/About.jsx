@@ -12,7 +12,7 @@ const members = [
 
 const pullQuotes = [
   {
-    quote: 'Quintessential light indie rock, jazz, and pop — with sophisticated playfulness.',
+    quote: 'Quintessential light indie rock, jazz, and pop with sophisticated playfulness.',
     source: 'Off the Record Press',
   },
   {
@@ -20,7 +20,7 @@ const pullQuotes = [
     source: 'DC Music Review',
   },
   {
-    quote: 'Bright brass and pulsing guitar — the late-night world of overthinking and uneasy glances.',
+    quote: 'Bright brass and pulsing guitar, the late-night world of overthinking and uneasy glances.',
     source: 'Dork',
   },
 ]
@@ -42,7 +42,7 @@ export default function About() {
                 <span className="italic font-light">Table</span>
               </h1>
               <p className="mt-6 md:mt-8 text-lg md:text-xl text-ink/80 max-w-xl text-balance leading-relaxed">
-                Six people. One table. A lot of staying up to 3 a.m. — set to brass,
+                Six people. One table. A lot of staying up to 3 a.m., set to brass,
                 swung drums, and jazz chords that shouldn't work but somehow do.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">
@@ -154,7 +154,7 @@ export default function About() {
                 {quote}
               </blockquote>
               <figcaption className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/50">
-                — {source}
+                {source}
               </figcaption>
             </figure>
           ))}
