@@ -1,4 +1,4 @@
-import { useEffect } from 'react'
+import TikTokEmbed from '../components/TikTokEmbed.jsx'
 
 export default function Socials() {
   return (
@@ -135,37 +135,3 @@ function SocialCard({ platform, handle, href, color, description }) {
   )
 }
 
-function TikTokEmbed({ username }) {
-  // TikTok's embed.js looks for `.tiktok-embed` blockquotes and converts them to iframes.
-  // In a React SPA, the script only runs once — so on client-side navigation we need
-  // to remove and re-inject it to force reprocessing after the blockquote mounts.
-  useEffect(() => {
-    const scriptId = 'tiktok-embed-script'
-    document.getElementById(scriptId)?.remove()
-    const script = document.createElement('script')
-    script.id = scriptId
-    script.src = 'https://www.tiktok.com/embed.js'
-    script.async = true
-    document.body.appendChild(script)
-  }, [username])
-
-  return (
-    <blockquote
-      className="tiktok-embed"
-      cite={`https://www.tiktok.com/@${username}`}
-      data-unique-id={username}
-      data-embed-type="creator"
-      style={{ maxWidth: 780, minWidth: 288, margin: '0 auto' }}
-    >
-      <section>
-        <a
-          target="_blank"
-          rel="noreferrer"
-          href={`https://www.tiktok.com/@${username}?refer=creator_embed`}
-        >
-          @{username}
-        </a>
-      </section>
-    </blockquote>
-  )
-}

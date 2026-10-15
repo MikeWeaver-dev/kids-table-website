@@ -29,7 +29,7 @@ export const posts = [
     date: '2026-10-01',
     title: 'The Southeast tour was something else',
     excerpt:
-      'Seven markets throughout the Southeast, one absolute blast. Thank you to everyone who came out — see you in 2027.',
+      'Seven markets throughout the Southeast, one absolute blast. Thank you to everyone who came out.',
     image: '/images/band-live.jpg',
     imageAlt: 'Kids Table performing live',
     body: [
