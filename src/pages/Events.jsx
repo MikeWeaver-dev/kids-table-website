@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react'
 
 const ARTIST = 'Kids Table'
-const APP_ID = import.meta.env.VITE_BANDS_IN_TOWN_API || ''
+// Bandsintown's public API accepts any string as app_id; it's an identifier,
+// not a secret. No signup or env var needed.
+const APP_ID = 'kids-table-website'
 
 export default function Events() {
   const [events, setEvents] = useState(null) // null = loading, [] = empty, [...] = loaded
@@ -10,11 +12,6 @@ export default function Events() {
   useEffect(() => {
     let cancelled = false
     async function fetchEvents() {
-      if (!APP_ID) {
-        setError('Bandsintown app ID not configured yet.')
-        setEvents([])
-        return
-      }
       try {
         const url = `https://rest.bandsintown.com/artists/${encodeURIComponent(ARTIST)}/events?app_id=${encodeURIComponent(APP_ID)}&date=upcoming`
         const res = await fetch(url)
