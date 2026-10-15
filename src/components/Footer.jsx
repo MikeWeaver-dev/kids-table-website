@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const socials = [
-  { label: 'Linktree + mailing list', href: 'https://linktr.ee/kidstabletheband' },
+  { label: 'Linktree', href: 'https://linktr.ee/kidstabletheband' },
   { label: 'Instagram', href: 'https://instagram.com/kidstabletheband' },
   { label: 'TikTok', href: 'https://tiktok.com/@kidstabletheband' },
   { label: 'YouTube', href: 'https://youtube.com/@kidstabletheband' },
@@ -60,6 +60,16 @@ export default function Footer() {
                 Or send us a message →
               </Link>
             </div>
+
+            <a
+              href="https://linktr.ee/kidstabletheband"
+              target="_blank"
+              rel="noreferrer"
+              className="group mt-6 inline-flex items-baseline gap-2 font-display italic text-plum hover:text-rust transition-colors"
+            >
+              <span className="text-lg leading-tight">Sign up for our mailing list</span>
+              <span className="transition-transform group-hover:translate-x-0.5">→</span>
+            </a>
           </div>
         </div>
 
