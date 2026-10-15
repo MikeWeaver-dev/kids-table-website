@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 
 const socials = [
+  { label: 'Linktree + mailing list', href: 'https://linktr.ee/kidstabletheband' },
   { label: 'Instagram', href: 'https://instagram.com/kidstabletheband' },
   { label: 'TikTok', href: 'https://tiktok.com/@kidstabletheband' },
   { label: 'YouTube', href: 'https://youtube.com/@kidstabletheband' },
