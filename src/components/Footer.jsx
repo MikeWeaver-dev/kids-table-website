@@ -65,7 +65,7 @@ export default function Footer() {
               href="https://linktr.ee/kidstabletheband"
               target="_blank"
               rel="noreferrer"
-              className="group mt-6 inline-flex items-baseline gap-2 font-display italic text-olive hover:text-rust transition-colors"
+              className="group mt-6 inline-flex items-baseline gap-2 font-display italic text-gold hover:text-rust transition-colors"
             >
               <span className="text-lg leading-tight">Sign up for our mailing list</span>
               <span className="transition-transform group-hover:translate-x-0.5">→</span>

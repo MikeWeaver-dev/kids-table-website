@@ -16,6 +16,7 @@ export default {
         plum: '#5c2a3e',
         olive: '#6b7a3a',
         dusk: '#2a2440',
+        gold: '#a67c2a',
       },
       letterSpacing: {
         tightest: '-0.04em',
