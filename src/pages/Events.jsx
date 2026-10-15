@@ -33,27 +33,17 @@ export default function Events() {
 
   return (
     <section className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-20">
-      <header className="mb-10 md:mb-14 flex flex-wrap justify-between items-end gap-4">
-        <div>
-          <p className="font-mono text-xs uppercase tracking-widest text-rust">Live</p>
-          <h1 className="mt-3 font-display font-black text-5xl md:text-7xl tracking-tightest leading-[0.95]">
-            Shows
-          </h1>
-        </div>
-        <a
-          href="https://www.bandsintown.com/a/15570878-kids-table"
-          target="_blank"
-          rel="noreferrer"
-          className="font-mono text-xs uppercase tracking-widest text-ink/60 hover:text-rust"
-        >
-          View on Bandsintown ↗
-        </a>
+      <header className="mb-10 md:mb-14">
+        <p className="font-mono text-xs uppercase tracking-widest text-rust">Live</p>
+        <h1 className="mt-3 font-display font-black text-5xl md:text-7xl tracking-tightest leading-[0.95]">
+          Shows
+        </h1>
       </header>
 
       {events === null ? (
         <LoadingState />
       ) : events.length === 0 ? (
-        <EmptyState error={error} />
+        <EmptyState />
       ) : (
         <ul className="divide-y divide-ink/10 border-y border-ink/10">
           {events.map((event) => (
@@ -61,14 +51,6 @@ export default function Events() {
           ))}
         </ul>
       )}
-
-      <p className="mt-10 text-sm text-ink/50">
-        Can't make a show? New dates are posted on{' '}
-        <a className="underline underline-offset-4 hover:text-rust" href="https://instagram.com/kidstabletheband" target="_blank" rel="noreferrer">
-          Instagram
-        </a>
-        {' '}first.
-      </p>
     </section>
   )
 }
@@ -89,15 +71,14 @@ function LoadingState() {
   )
 }
 
-function EmptyState({ error }) {
+function EmptyState() {
   return (
     <div className="border border-ink/10 bg-cream px-6 py-10 md:py-14 text-center rounded-sm">
       <p className="font-display text-3xl md:text-4xl tracking-tightest">
-        No shows on the books right now.
+        Nothing to show right now.
       </p>
       <p className="mt-3 text-ink/60 max-w-md mx-auto">
-        We're writing, recording, and resting our vocal cords. Follow us for the next
-        drop. We usually announce dates on Instagram first.
+        Check out our Instagram or Spotify for show dates.
       </p>
       <div className="mt-6 flex flex-wrap justify-center gap-3">
         <a
@@ -106,12 +87,17 @@ function EmptyState({ error }) {
           rel="noreferrer"
           className="inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 text-sm uppercase tracking-wider hover:bg-rust transition-colors"
         >
-          Follow on Instagram →
+          Instagram →
+        </a>
+        <a
+          href="https://open.spotify.com/search/kids%20table"
+          target="_blank"
+          rel="noreferrer"
+          className="inline-flex items-center gap-2 border border-ink/20 text-ink px-5 py-3 text-sm uppercase tracking-wider hover:border-ink transition-colors"
+        >
+          Spotify →
         </a>
       </div>
-      {error && (
-        <p className="mt-6 text-xs text-ink/40 font-mono">{error}</p>
-      )}
     </div>
   )
 }

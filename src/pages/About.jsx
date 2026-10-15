@@ -112,21 +112,15 @@ export default function About() {
       {/* Members */}
       <section className="bg-ink text-paper">
         <div className="max-w-6xl mx-auto px-5 md:px-8 py-16 md:py-24">
-          <div className="flex items-end justify-between flex-wrap gap-4 mb-10 md:mb-14">
+          <div className="mb-10 md:mb-14">
             <h2 className="font-display font-black text-4xl md:text-6xl tracking-tightest leading-none">
               The six.
             </h2>
-            <p className="font-mono text-xs uppercase tracking-widest text-paper/50">
-              Lineup
-            </p>
           </div>
           <ul className="grid grid-cols-2 md:grid-cols-3 gap-x-6 gap-y-10 md:gap-y-14">
-            {members.map(({ name, role }, i) => (
+            {members.map(({ name, role }) => (
               <li key={name} className="flex flex-col">
-                <span className="font-mono text-xs text-paper/40">
-                  0{i + 1}
-                </span>
-                <span className="mt-2 font-display font-bold text-2xl md:text-3xl tracking-tightest leading-tight">
+                <span className="font-display font-bold text-2xl md:text-3xl tracking-tightest leading-tight">
                   {name}
                 </span>
                 <span className="mt-1 text-paper/60 text-sm uppercase tracking-wider">

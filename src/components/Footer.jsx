@@ -62,7 +62,7 @@ export default function Footer() {
             </div>
 
             <a
-              href="https://linktr.ee/kidstabletheband"
+              href="https://linktr.us6.list-manage.com/subscribe?u=4f7ade4ad33449518a3a9f3b0&id=d10f7d4397"
               target="_blank"
               rel="noreferrer"
               className="group mt-6 inline-flex items-baseline gap-2 font-display italic text-gold hover:text-rust transition-colors"
