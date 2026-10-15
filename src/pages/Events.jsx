@@ -44,7 +44,7 @@ export default function Events() {
           </h1>
         </div>
         <a
-          href="https://www.bandsintown.com/a/kids-table"
+          href="https://www.bandsintown.com/a/15570878-kids-table"
           target="_blank"
           rel="noreferrer"
           className="font-mono text-xs uppercase tracking-widest text-ink/60 hover:text-rust"

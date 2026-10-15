@@ -38,13 +38,27 @@ export default function Socials() {
         <p className="font-mono text-xs uppercase tracking-widest text-ink/50 mb-5">
           Latest from TikTok
         </p>
-        <div className="rounded border border-ink/10 bg-cream p-5 md:p-8">
-          <TikTokEmbed username="kidstabletheband" />
+        <div className="relative rounded border border-ink/10 bg-cream p-5 md:p-8 min-h-[520px]">
+          {/* Loading state — sits behind the TikTok iframe. Once TikTok replaces
+              the blockquote with its iframe, the solid iframe covers this. */}
+          <div
+            className="pointer-events-none absolute inset-0 rounded overflow-hidden"
+            aria-hidden
+          >
+            <div className="absolute inset-0 bg-gradient-to-br from-plum/20 via-rust/15 to-dusk/20 animate-pulse" />
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-center">
+                <div className="inline-block w-8 h-8 border-[3px] border-rust/70 border-t-transparent rounded-full animate-spin" />
+                <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/50">
+                  Loading posts from TikTok
+                </p>
+              </div>
+            </div>
+          </div>
+          <div className="relative">
+            <TikTokEmbed username="kidstabletheband" />
+          </div>
         </div>
-        <p className="mt-4 text-xs text-ink/50 font-mono">
-          Posts load live from TikTok. Instagram embeds require a Facebook Developer app —
-          we'll wire that up when you're ready.
-        </p>
       </div>
 
       <div className="mt-16 md:mt-24 border-t border-ink/10 pt-10">

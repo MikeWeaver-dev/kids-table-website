@@ -12,6 +12,9 @@ dist-ssr
 # The web-optimized versions live in public/images and ARE committed.
 /assets
 
+# Local Claude Code settings
+.claude/
+
 # OS
 .DS_Store
 Thumbs.db

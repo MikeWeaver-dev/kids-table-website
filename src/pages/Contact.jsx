@@ -47,8 +47,7 @@ export default function Contact() {
           <span className="italic font-light">something.</span>
         </h1>
         <p className="mt-5 text-lg text-ink/70">
-          Booking, press, collabs, or just saying hi. We read everything, usually
-          between 10pm and 3am.
+          Booking, press, collabs, or just saying hi. We read everything (eventually).
         </p>
       </header>
 

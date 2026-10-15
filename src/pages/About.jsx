@@ -42,7 +42,7 @@ export default function About() {
                 <span className="italic font-light">Table</span>
               </h1>
               <p className="mt-6 md:mt-8 text-lg md:text-xl text-ink/80 max-w-xl text-balance leading-relaxed">
-                Six people. One table. A lot of overthinking at 3 a.m. — set to brass,
+                Six people. One table. A lot of staying up to 3 a.m. — set to brass,
                 swung drums, and jazz chords that shouldn't work but somehow do.
               </p>
               <div className="mt-7 flex flex-wrap gap-3">

@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         <div className="mt-12 pt-6 border-t border-ink/10 flex flex-col sm:flex-row justify-between gap-2 text-xs font-mono text-ink/40">
-          <p>© {new Date().getFullYear()} Kids Table. All rights reserved.</p>
+          <p>© Kids Table. All rights reserved.</p>
           <p>Built with love in Washington, DC</p>
         </div>
       </div>
