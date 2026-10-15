@@ -1,0 +1,27 @@
+node_modules
+dist
+dist-ssr
+.firebase
+*.local
+.vite
+.env
+.env.local
+.env.*.local
+
+# Original un-optimized source photos — kept locally only.
+# The web-optimized versions live in public/images and ARE committed.
+/assets
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
