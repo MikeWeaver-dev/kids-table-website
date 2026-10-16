@@ -42,7 +42,7 @@ export default function Contact() {
       <header className="mb-10 md:mb-14">
         <p className="font-mono text-xs uppercase tracking-widest text-rust">Contact</p>
         <h1 className="mt-3 font-display font-black text-5xl md:text-7xl tracking-tightest leading-[0.95]">
-          Say Hi
+          Say hi
           <br />
         </h1>
         <p className="mt-5 text-lg text-ink/70">
