@@ -11,8 +11,21 @@ import TikTokEmbed from './TikTokEmbed.jsx'
 //     otherwise it sits invisible behind the page.
 // The trade-off: every visitor downloads the feed, even if they never open
 // /socials. That was a deliberate call by the band.
+//
+// TikTok's script reveals its iframe as soon as it loads, even when what
+// loaded is a raw error page (e.g. a 503 "overload-protect triggered" when
+// TikTok throttles). A working feed always posts its height to the page, so
+// the feed stays invisible until that message arrives (status 'ready'). If it
+// never does, status becomes 'failed' and /socials shows a fallback instead;
+// opening /socials after a failure retries once.
 
-const FeedContext = createContext({ setSlot: () => {}, height: 0 })
+const FeedContext = createContext({ setSlot: () => {}, height: 0, status: 'idle' })
+export const useTikTokFeed = () => useContext(FeedContext)
+
+const TIKTOK_ORIGIN = 'https://www.tiktok.com'
+// How long after TikTok's iframe loads to wait for its height message.
+const READY_GRACE_MS = 6000
+const MAX_ATTEMPTS = 2
 
 const whenIdle = (cb) => {
   if (window.requestIdleCallback) {
@@ -64,6 +77,8 @@ export function TikTokFeedProvider({ username, children }) {
   const [started, setStarted] = useState(false)
   const [box, setBox] = useState(null)
   const [height, setHeight] = useState(0)
+  const [status, setStatus] = useState('idle') // idle | loading | ready | failed
+  const [attempt, setAttempt] = useState(1)
   const hostRef = useRef(null)
 
   useEffect(() => {
@@ -82,6 +97,55 @@ export function TikTokFeedProvider({ username, children }) {
       cancelIdle()
     }
   }, [slot, started])
+
+  // Watch each attempt for TikTok's height message (= the feed really works).
+  useEffect(() => {
+    if (!started) return
+    setStatus('loading')
+    const host = hostRef.current
+    let failTimer
+    const failIn = (ms) => {
+      window.clearTimeout(failTimer)
+      failTimer = window.setTimeout(() => setStatus((s) => (s === 'ready' ? s : 'failed')), ms)
+    }
+    const onMessage = (e) => {
+      if (e.origin !== TIKTOK_ORIGIN || typeof e.data !== 'string') return
+      let data
+      try {
+        data = JSON.parse(e.data)
+      } catch {
+        return
+      }
+      if (String(data?.signalSource).includes('__tt_embed__') && data.height > 0) {
+        window.clearTimeout(failTimer)
+        setStatus('ready')
+      }
+    }
+    // An error page loads quickly but never posts its height.
+    const watchIframe = () => {
+      const frame = host.querySelector('iframe')
+      if (frame && !frame.dataset.watched) {
+        frame.dataset.watched = '1'
+        frame.addEventListener('load', () => failIn(READY_GRACE_MS))
+      }
+    }
+    const mo = new MutationObserver(watchIframe)
+    mo.observe(host, { childList: true, subtree: true })
+    window.addEventListener('message', onMessage)
+    // TikTokEmbed's effect (a child, so it already ran) injected the script.
+    document.getElementById('tiktok-embed-script')?.addEventListener('error', () => failIn(0))
+    failIn(30000)
+    return () => {
+      mo.disconnect()
+      window.removeEventListener('message', onMessage)
+      window.clearTimeout(failTimer)
+    }
+  }, [started, attempt])
+
+  // Opening /socials after a failed attempt tries once more.
+  useEffect(() => {
+    if (slot && status === 'failed' && attempt < MAX_ATTEMPTS) setAttempt((a) => a + 1)
+  }, [slot, status, attempt])
 
   // Follow the slot around as the page lays out.
   useLayoutEffect(() => {
@@ -113,30 +177,33 @@ export function TikTokFeedProvider({ username, children }) {
     return () => ro.disconnect()
   }, [])
 
-  const visible = box !== null
+  const onSlot = box !== null
+  const shown = onSlot && status === 'ready'
   useEffect(() => {
     // Keep the hidden copy out of the tab order and screen readers.
-    hostRef.current.inert = !visible
-  }, [visible])
+    hostRef.current.inert = !shown
+  }, [shown])
 
-  const ctx = useMemo(() => ({ setSlot, height }), [height])
+  const ctx = useMemo(() => ({ setSlot, height, status }), [height, status])
 
   return (
     <FeedContext.Provider value={ctx}>
       {children}
       <div
         ref={hostRef}
-        aria-hidden={!visible}
+        aria-hidden={!shown}
         style={
-          visible
+          onSlot
             ? {
                 position: 'absolute',
                 top: box.top,
                 left: box.left,
                 width: box.width,
                 zIndex: 10,
-                // Same fade-up as <main>'s page-enter, so it moves with the slot.
-                animation: 'fadeUp 0.5s cubic-bezier(0.2, 0.65, 0.3, 1) both',
+                ...(shown
+                  ? // Same fade-up as <main>'s page-enter, so it moves with the slot.
+                    { animation: 'fadeUp 0.5s cubic-bezier(0.2, 0.65, 0.3, 1) both' }
+                  : { opacity: 0, pointerEvents: 'none' }),
               }
             : {
                 // In the viewport (so the browser doesn't lazy-skip the iframe)
@@ -151,13 +218,14 @@ export function TikTokFeedProvider({ username, children }) {
               }
         }
       >
-        {started && <TikTokEmbed username={username} />}
+        {started && <TikTokEmbed key={attempt} username={username} />}
       </div>
     </FeedContext.Provider>
   )
 }
 
+// Reserves room for the feed once it's ready; zero height until then.
 export function TikTokFeedSlot() {
-  const { setSlot, height } = useContext(FeedContext)
-  return <div ref={setSlot} style={{ height: height || undefined }} />
+  const { setSlot, height, status } = useContext(FeedContext)
+  return <div ref={setSlot} style={{ height: status === 'ready' ? height : 0 }} />
 }

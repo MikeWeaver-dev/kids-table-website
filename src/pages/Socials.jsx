@@ -1,6 +1,8 @@
-import { TikTokFeedSlot } from '../components/TikTokFeed.jsx'
+import { TikTokFeedSlot, useTikTokFeed } from '../components/TikTokFeed.jsx'
 
 export default function Socials() {
+  const tiktok = useTikTokFeed()
+
   return (
     <section className="max-w-6xl mx-auto px-5 md:px-8 py-12 md:py-20">
       <header className="mb-10 md:mb-14">
@@ -38,23 +40,31 @@ export default function Socials() {
         <p className="font-mono text-xs uppercase tracking-widest text-ink/50 mb-5">
           Latest from TikTok
         </p>
-        <div className="relative rounded border border-ink/10 bg-cream p-5 md:p-8 min-h-[520px]">
-          {/* Loading state — sits behind the TikTok feed, which is laid over the
-              slot below. Once TikTok's iframe renders, it covers this. */}
-          <div
-            className="pointer-events-none absolute inset-0 rounded overflow-hidden"
-            aria-hidden
-          >
-            <div className="absolute inset-0 bg-gradient-to-br from-plum/20 via-rust/15 to-dusk/20 animate-pulse" />
-            <div className="absolute inset-0 flex items-center justify-center">
-              <div className="text-center">
-                <div className="inline-block w-8 h-8 border-[3px] border-rust/70 border-t-transparent rounded-full animate-spin" />
-                <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/50">
-                  Loading posts from TikTok
-                </p>
+        {/* The feed itself is laid over the slot (see TikTokFeed.jsx); the box
+            hugs it once it's ready. */}
+        <div
+          className={`relative rounded border border-ink/10 bg-cream p-5 md:p-8 ${
+            tiktok.status === 'ready' || tiktok.status === 'failed' ? '' : 'min-h-[520px]'
+          }`}
+        >
+          {tiktok.status === 'failed' ? (
+            <TikTokFallback />
+          ) : tiktok.status !== 'ready' ? (
+            <div
+              className="pointer-events-none absolute inset-0 rounded overflow-hidden"
+              aria-hidden
+            >
+              <div className="absolute inset-0 bg-gradient-to-br from-plum/20 via-rust/15 to-dusk/20 animate-pulse" />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="text-center">
+                  <div className="inline-block w-8 h-8 border-[3px] border-rust/70 border-t-transparent rounded-full animate-spin" />
+                  <p className="mt-4 font-mono text-xs uppercase tracking-widest text-ink/50">
+                    Loading posts from TikTok
+                  </p>
+                </div>
               </div>
             </div>
-          </div>
+          ) : null}
           <div className="relative">
             <TikTokFeedSlot />
           </div>
@@ -99,6 +109,28 @@ export default function Socials() {
         </ul>
       </div>
     </section>
+  )
+}
+
+// Shown when TikTok won't serve the feed (it throttles sometimes).
+function TikTokFallback() {
+  return (
+    <div className="py-8 md:py-12 text-center">
+      <p className="font-display text-3xl md:text-4xl tracking-tightest">
+        TikTok isn't loading right now.
+      </p>
+      <p className="mt-3 text-ink/60 max-w-md mx-auto">
+        Our latest posts are one tap away.
+      </p>
+      <a
+        href="https://www.tiktok.com/@kidstabletheband"
+        target="_blank"
+        rel="noreferrer"
+        className="mt-6 inline-flex items-center gap-2 bg-ink text-paper px-5 py-3 text-sm uppercase tracking-wider hover:bg-rust transition-colors"
+      >
+        Watch on TikTok →
+      </a>
+    </div>
   )
 }
 
