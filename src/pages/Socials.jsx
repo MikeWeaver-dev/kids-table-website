@@ -1,4 +1,4 @@
-import TikTokEmbed from '../components/TikTokEmbed.jsx'
+import { TikTokFeedSlot } from '../components/TikTokFeed.jsx'
 
 export default function Socials() {
   return (
@@ -39,8 +39,8 @@ export default function Socials() {
           Latest from TikTok
         </p>
         <div className="relative rounded border border-ink/10 bg-cream p-5 md:p-8 min-h-[520px]">
-          {/* Loading state — sits behind the TikTok iframe. Once TikTok replaces
-              the blockquote with its iframe, the solid iframe covers this. */}
+          {/* Loading state — sits behind the TikTok feed, which is laid over the
+              slot below. Once TikTok's iframe renders, it covers this. */}
           <div
             className="pointer-events-none absolute inset-0 rounded overflow-hidden"
             aria-hidden
@@ -56,7 +56,7 @@ export default function Socials() {
             </div>
           </div>
           <div className="relative">
-            <TikTokEmbed username="kidstabletheband" />
+            <TikTokFeedSlot />
           </div>
         </div>
       </div>

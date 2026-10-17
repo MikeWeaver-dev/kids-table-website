@@ -247,7 +247,7 @@ Another `vite` is probably running. Kill it (close the terminal or `Ctrl+C`), or
 Check the [Actions tab](https://github.com/MikeWeaver-dev/kids-table-website/actions). If the latest run is red, click into it to see which step failed. Common causes: lint error in a new file, image path typo, missing import. The failing step shows the exact Node error.
 
 **TikTok embed is blank**
-The embed only renders if `@kidstabletheband` has public posts. Confirm the account has public TikToks. Hard-refresh (Ctrl+Shift+R). The site preloads the embed on first page view so navigating to `/socials` should feel fast — if it doesn't, see the loading state (gradient + spinner).
+The embed only renders if `@kidstabletheband` has public posts. Confirm the account has public TikToks. Hard-refresh (Ctrl+Shift+R). One copy of the feed (`src/components/TikTokFeed.jsx`) starts loading in the background once the first page finishes loading, stays alive while visitors move between pages, and is shown over the slot on `/socials`, so the page usually opens with the feed ready. If someone opens `/socials` within the first few seconds, they'll see the loading state (gradient + spinner) until TikTok finishes.
 
 **Shows page shows "No shows on the books"**
 Either Bandsintown has no upcoming events for artist ID 15570878, or the request failed. Open the browser console on `/shows`: a `[Shows]` error with status 403 means the app_id is missing or wrong (check `.env` locally, the `BANDSINTOWN_APP_ID` secret in CI). Otherwise shows auto-update from Bandsintown — add new dates there, they appear here within a few minutes.
