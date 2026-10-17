@@ -19,6 +19,7 @@ jobs:
       - run: npm run build
         env:
           VITE_BANDS_IN_TOWN_API: ${{ secrets.BANDSINTOWN_APP_ID }}
+      - run: node scripts/add-games.mjs
       - uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: ${{ secrets.GITHUB_TOKEN }}
