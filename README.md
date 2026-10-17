@@ -33,7 +33,7 @@ Any band member can edit the site. **Push to `main` and it deploys automatically
 | Hosting | Firebase Hosting |
 | CI/CD | GitHub Actions (`FirebaseExtended/action-hosting-deploy@v0`) |
 | Contact form | Formspree (free tier) |
-| Shows API | Bandsintown public API (no key needed) |
+| Shows API | Bandsintown API (artist app_id from Bandsintown for Artists) |
 | Social embeds | TikTok oEmbed script |
 
 **Node version:** 20.x (CI uses 20; works locally with any 18+).
@@ -63,7 +63,13 @@ npm run build       # produces dist/
 npm run preview     # serves dist/ at localhost:4173
 ```
 
-That's it — no env files, no secrets, no accounts to set up. The Bandsintown API uses a public identifier, Formspree is wired to the shared band email, and nothing requires auth.
+One env var is needed for the Shows page. Create `.env` in the project root:
+
+```
+VITE_BANDS_IN_TOWN_API=<app_id from Bandsintown for Artists>
+```
+
+CI reads the same value from the `BANDSINTOWN_APP_ID` GitHub Actions secret. Without it the Shows page always shows the empty state. Formspree is wired to the shared band email and needs no setup.
 
 ---
 
@@ -244,7 +250,7 @@ Check the [Actions tab](https://github.com/MikeWeaver-dev/kids-table-website/act
 The embed only renders if `@kidstabletheband` has public posts. Confirm the account has public TikToks. Hard-refresh (Ctrl+Shift+R). The site preloads the embed on first page view so navigating to `/socials` should feel fast — if it doesn't, see the loading state (gradient + spinner).
 
 **Shows page shows "No shows on the books"**
-Means Bandsintown has no upcoming events listed for the artist "Kids Table". Shows auto-update from Bandsintown — add new dates there, they appear here within a few minutes.
+Either Bandsintown has no upcoming events for artist ID 15570878, or the request failed. Open the browser console on `/shows`: a `[Shows]` error with status 403 means the app_id is missing or wrong (check `.env` locally, the `BANDSINTOWN_APP_ID` secret in CI). Otherwise shows auto-update from Bandsintown — add new dates there, they appear here within a few minutes.
 
 **Contact form submissions aren't arriving**
 Check the Formspree dashboard: https://formspree.io/forms/xoejpjnw. The form ID is in `src/pages/Contact.jsx`. If the band wants to change the destination email, do it in Formspree's dashboard (not the code).

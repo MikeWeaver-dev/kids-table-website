@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react'
 
-const ARTIST = 'Kids Table'
-// Bandsintown's public API accepts any string as app_id; it's an identifier,
-// not a secret. No signup or env var needed.
-const APP_ID = 'kids-table-website'
+// Query by Bandsintown artist ID, not name, so we always hit our profile:
+// https://www.bandsintown.com/a/15570878-kids-table
+const ARTIST = 'id_15570878'
+// Bandsintown rejects made-up app_ids (403). This must be the app_id from the
+// Bandsintown for Artists dashboard. It ships in the public JS bundle, so it's
+// not a secret, but it lives in .env / GitHub secrets to keep it out of git.
+const APP_ID = import.meta.env.VITE_BANDS_IN_TOWN_API
 
 export default function Events() {
   const [events, setEvents] = useState(null) // null = loading, [] = empty, [...] = loaded
@@ -13,12 +16,15 @@ export default function Events() {
     let cancelled = false
     async function fetchEvents() {
       try {
+        if (!APP_ID) throw new Error('VITE_BANDS_IN_TOWN_API is not set')
         const url = `https://rest.bandsintown.com/artists/${encodeURIComponent(ARTIST)}/events?app_id=${encodeURIComponent(APP_ID)}&date=upcoming`
         const res = await fetch(url)
-        if (!res.ok) throw new Error('Bandsintown request failed')
+        if (!res.ok) throw new Error(`Bandsintown request failed (${res.status})`)
         const data = await res.json()
         if (!cancelled) setEvents(Array.isArray(data) ? data : [])
       } catch (e) {
+        // Fans see the empty state either way; log so a broken key is findable.
+        console.error('[Shows]', e)
         if (!cancelled) {
           setError('Could not load shows right now.')
           setEvents([])
