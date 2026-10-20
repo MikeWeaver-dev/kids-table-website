@@ -54,7 +54,7 @@ export const posts = [
       "A bunch of nice words have been written about 3AM Club in the past couple weeks, so we figured we'd put them in one place.",
       "Off the Record Press called the record 'quintessential light indie rock, jazz, and pop' with 'sophisticated playfulness.' Read the full interview and album review for how it came together.",
       "DC Music Review wrote that it 'nails the oddly specific experiences and anxieties of love,' which was honestly the goal. Dork covered our single 'Where You Shouldn't Be' and clocked the trumpet, which Ryan appreciated.",
-      "The Daily Tar Heel also ran a feature on four of us going from Chapel Hill to DC, if that part of the story interests you.",
+      "The Daily Tar Heel also ran a feature on how all of us made our way from Chapel Hill to DC, if that part of the story interests you.",
     ],
     links: [
       { label: 'Off the Record Press: Interview', href: 'https://offtherecordpress.com/interviews/kids-table' },
