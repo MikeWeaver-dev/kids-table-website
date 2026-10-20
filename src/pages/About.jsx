@@ -21,7 +21,7 @@ const pullQuotes = [
   },
   {
     quote: 'Bright brass and pulsing guitar, the late-night world of overthinking and uneasy glances.',
-    source: 'Dork',
+    source: 'Dork Magazine',
   },
 ]
 

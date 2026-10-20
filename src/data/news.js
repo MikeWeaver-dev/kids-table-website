@@ -47,20 +47,20 @@ export const posts = [
     date: '2026-09-23',
     title: 'A few people have been writing about us',
     excerpt:
-      'A quick roundup of interviews and reviews from Off the Record Press, DC Music Review, Dork, and more.',
+      'A quick roundup of interviews and reviews from Off the Record Press, DC Music Review, Dork Magazine, and more.',
     image: '/images/band-studio.jpg',
     imageAlt: 'Kids Table in the studio',
     body: [
       "A bunch of nice words have been written about 3AM Club in the past couple weeks, so we figured we'd put them in one place.",
       "Off the Record Press called the record 'quintessential light indie rock, jazz, and pop' with 'sophisticated playfulness.' Read the full interview and album review for how it came together.",
-      "DC Music Review wrote that it 'nails the oddly specific experiences and anxieties of love,' which was honestly the goal. Dork covered our single 'Where You Shouldn't Be' and clocked the trumpet, which Ryan appreciated.",
+      "DC Music Review wrote that it 'nails the oddly specific experiences and anxieties of love,' which was honestly the goal. Dork Magazine covered our single 'Where You Shouldn't Be' and clocked the trumpet, which Ryan appreciated.",
       "The Daily Tar Heel also ran a feature on how all of us made our way from Chapel Hill to DC, if that part of the story interests you.",
     ],
     links: [
       { label: 'Off the Record Press: Interview', href: 'https://offtherecordpress.com/interviews/kids-table' },
       { label: 'Off the Record Press: 3AM Club review', href: 'https://offtherecordpress.com/album-reviews/kids-table-invites-listeners-to-the-3am-club-with-indie-pop-charm' },
       { label: 'DC Music Review', href: 'https://www.dcmusicreview.com/album-review-3-am-club-by-kids-table/' },
-      { label: 'Dork', href: 'https://readdork.com/news/kids-table-where-you-shouldnt-be-3am-club-d37b3e3ef0' },
+      { label: 'Dork Magazine', href: 'https://readdork.com/news/kids-table-where-you-shouldnt-be-3am-club-d37b3e3ef0' },
       { label: 'Daily Tar Heel feature', href: 'https://dailytarheel.com/article/lifestyle-kids-table-band-feature-20251111' },
       { label: 'WVAU interview', href: 'https://wvau.org/in-the-press/interview-kids-table/' },
     ],
